@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>使用js创建虚拟dom</title>
+</head>
+<body>
+<div id="test"></div>
+
+<script src="../js/react.js"></script>
+<script src="../js/react-dom.js"></script>
+<!--<script src="../js/babel.min.js"></script>-->
+
+<script>
+  // 1.创建虚拟DOM
+  // const VDOM = React.createElement(标签名, 标签属性， 标签内容)
+  const VDOM = React.createElement('h1', {id: 'title'}, React.createElement('span', {}, 'Hello, React'))
+  // 2.渲染虚拟DOM到页面
+  ReactDOM.render(VDOM, document.getElementById('test'))
+</script>
+
+</body>
+</html>

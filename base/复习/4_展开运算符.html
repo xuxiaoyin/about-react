@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    let arr1 = [1,3,5,7,9]
+    let arr2 = [2,4,6,8,10]
+    console.log(...arr1) // 展开一个数组
+    let arr3 = [...arr1, ...arr2] // 连接数组
+    console.log(arr3)
+
+    // 在函数中使用
+    function sum(...numbers) {
+      console.log(numbers)
+      return numbers.reduce((preValue, currentValue) => {
+        return preValue + currentValue
+      })
+    }
+    let result = sum(1,2,3,4)
+    console.log(result)
+
+    // 复制对象
+    let person = {name: '测试', age: 12}
+    // console.log(...person) // 报错，展开运算符不能展开对象
+    let person2 = {...person} // {} 正确 复制一个对象
+    person2.name = '张三'
+    console.log(person2)
+    console.log(person)
+
+    // 合并
+    let person3 = {...person, name: '王五'}
+    console.log(person3)
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ref</title>
+</head>
+<body>
+<div id="test"></div>
+
+<script src="../js/react.js"></script>
+<script src="../js/react-dom.js"></script>
+<script src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+  class Demo extends React.Component {
+    showData = () => {
+      const { input1 } = this
+      alert(input1.value)
+    }
+    showData2 = () => {
+      const { input2 } = this
+      alert(input2.value)
+    }
+    render() {
+      return (
+          <div>
+            <input ref={ c => this.input1 = c } type="text" placeholder="点击按钮提示数据" />
+            <button onClick={this.showData}>点击提示数据</button><br />
+            <input ref={c => this.input2 = c} type="text" placeholder="失去焦点提示数据" onBlur={this.showData2} />
+          </div>
+      )
+    }
+  }
+
+  ReactDOM.render(<Demo/>, document.getElementById('test'))
+</script>
+</body>
+</html>
