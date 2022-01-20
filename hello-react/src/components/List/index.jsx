@@ -12,10 +12,15 @@ class List extends Component {
 
   componentDidMount() {
     // 订阅消息
-    PubSub.subscribe('updateState', (_, data) => {
+    this.msgid = PubSub.subscribe('updateState', (_, data) => {
       console.log(data)
       this.setState(data)
     })
+  }
+
+  componentWillMount() {
+    // 取消订阅
+    PubSub.unsubscribe(this.msgid)
   }
 
   render() {
