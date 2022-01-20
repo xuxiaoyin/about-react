@@ -1,28 +1,28 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import PubSub from 'pubsub-js'
 
 class Serrch extends Component {
   keyWord = React.createRef()
 
   search = () => {
+    const { updateState } = this.props
     // 1.获取用户输入
     const { value } = this.keyWord.current
     // 2.校验数据
     if (!value.trim()) {
       return alert('输入不能为空')
     }
-    PubSub.publish('updateState', {isFirst: false, loading: true})
+    updateState({isFirst: false, loading: true})
     // 3.发送请求
     axios.get('https://api.github.com/search/users?q=' + value).then(
         response => {
           const { items } =  response.data
           // 通知app存储用户信息
-          PubSub.publish('updateState', {users: items, loading: false})
+          updateState({users: items, loading: false})
         },
         err => {
           // 请求失败
-          PubSub.publish('updateState', {loading: false, error: err.message})
+          updateState({loading: false, error: err.message})
         }
     )
   }

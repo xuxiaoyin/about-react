@@ -1,26 +1,9 @@
 import React, {Component} from 'react';
-import PubSub from 'pubsub-js';
-import './index.css';
+import './index.css'
 
 class List extends Component {
-  state = {
-    users: [], // 存储用户信息
-    isFirst: true, // 是否为初始展示
-    loading: false,
-    error: ''
-  }
-
-  componentDidMount() {
-    // 订阅消息
-    PubSub.subscribe('updateState', (_, data) => {
-      console.log(data)
-      this.setState(data)
-    })
-  }
-
   render() {
-    const {users, loading, isFirst, error} = this.state
-
+    const {users, loading, isFirst, error} = this.props
     return (
         <div className="row">
           {
