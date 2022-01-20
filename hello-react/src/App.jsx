@@ -3,10 +3,7 @@ import axios from 'axios'
 
 class App extends Component {
   getStudents = () => {
-    const result = axios({
-      url: 'http://localhost:3000/students',
-      method: 'GET'
-    }).then(
+    const result = axios.get('http://localhost:3000/api/students').then(
         response => {
           console.log(response.data)
         },
