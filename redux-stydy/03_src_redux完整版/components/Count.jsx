@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import store from '../redux/store';
-import { craeteIncrementAction, craeteDecrementAction, craeteIncrementAsyncAction } from '../redux/count_action'
+import { craeteIncrementAction, craeteDecrementAction } from '../redux/count_action'
 
 class Count extends Component {
   state = {  wind: '北风6级' }
@@ -31,10 +31,9 @@ class Count extends Component {
     // 获取用户选择的数字
     const { value } = this.numberNode
     // 更新状态
-    // setTimeout(() => {
-    //   store.dispatch(craeteIncrementAction(value * 1))
-    // }, 500)
-    store.dispatch(craeteIncrementAsyncAction(value * 1, 500))
+    setTimeout(() => {
+      store.dispatch(craeteIncrementAction(value * 1))
+    }, 500)
   }
 
   render() {

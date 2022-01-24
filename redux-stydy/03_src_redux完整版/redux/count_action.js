@@ -7,11 +7,3 @@ export const craeteIncrementAction = value => ({type: INCREMENT, data: value})
 
 // 创建减的action
 export const craeteDecrementAction = value => ({type: DECREMENT, data: value})
-
-export const craeteIncrementAsyncAction = (value, delay) => {
-  return (dispatch) => {
-    setTimeout(() => {
-      dispatch(craeteIncrementAction(value))
-    }, delay)
-  }
-}
