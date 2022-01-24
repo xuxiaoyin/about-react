@@ -1,38 +1,46 @@
 import React, {Component} from 'react';
+import store from '../redux/store';
+import { craeteIncrementAction, craeteDecrementAction, craeteIncrementAsyncAction } from '../redux/count_action'
+
 class Count extends Component {
   state = {  wind: '北风6级' }
   // 加
   increment = () => {
     // 获取用户选择的数字
     const { value } = this.numberNode
-    this.props.jia(value * 1)
+    //分发这个action
+    store.dispatch(craeteIncrementAction(value * 1))
   }
   // 减
   decrement = () => {
     // 获取用户选择的数字
     const { value } = this.numberNode
-    this.props.jian(value * 1)
+    //分发这个action
+    store.dispatch(craeteDecrementAction(value * 1))
   }
   // 奇数加
   incrementIfOdd = () => {
     // 获取用户选择的数字
     const { value } = this.numberNode
-    if (this.props.sum % 2 !== 0) {
-      this.props.jia(value * 1)
+    if (store.getState() % 2 !== 0) {
+      store.dispatch(craeteIncrementAction(value * 1))
     }
   }
   // 异步加
   incrementAsync = () => {
     // 获取用户选择的数字
     const { value } = this.numberNode
-    this.props.jiaAsync(value * 1, 500)
+    // 更新状态
+    // setTimeout(() => {
+    //   store.dispatch(craeteIncrementAction(value * 1))
+    // }, 500)
+    store.dispatch(craeteIncrementAsyncAction(value * 1, 500))
   }
 
   render() {
-    console.log(this.props)
     return (
         <div>
-          <h2>当前求和为：{this.props.sum}</h2>
+          <h2>当前求和为：{store.getState()}</h2>
           <div>今天的天气：{this.state.wind}</div>
           <select ref={c => this.numberNode = c}>
             <option value="1">1</option>
