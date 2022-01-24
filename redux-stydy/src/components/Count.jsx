@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import store from '../redux/store'
+import store from '../redux/store';
+import { craeteIncrementAction, craeteDecrementAction } from '../redux/count_action'
 
 class Count extends Component {
   state = {  wind: '北风6级' }
@@ -7,26 +8,22 @@ class Count extends Component {
   increment = () => {
     // 获取用户选择的数字
     const { value } = this.numberNode
-    // 准备一个action对象
-    const action = {type: 'increment', data: value * 1}
     //分发这个action
-    store.dispatch(action)
+    store.dispatch(craeteIncrementAction(value * 1))
   }
   // 减
   decrement = () => {
     // 获取用户选择的数字
     const { value } = this.numberNode
-    // 准备一个action对象
-    const action = {type: 'decrement', data: value * 1}
     //分发这个action
-    store.dispatch(action)
+    store.dispatch(craeteDecrementAction(value * 1))
   }
   // 奇数加
   incrementIfOdd = () => {
     // 获取用户选择的数字
     const { value } = this.numberNode
     if (store.getState() % 2 !== 0) {
-      store.dispatch({type: 'increment', data: value * 1})
+      store.dispatch(craeteIncrementAction(value * 1))
     }
   }
   // 异步加
@@ -35,7 +32,7 @@ class Count extends Component {
     const { value } = this.numberNode
     // 更新状态
     setTimeout(() => {
-      store.dispatch({type: 'increment', data: value * 1})
+      store.dispatch(craeteIncrementAction(value * 1))
     }, 500)
   }
 
