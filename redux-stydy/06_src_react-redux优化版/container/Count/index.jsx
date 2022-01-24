@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-class Count extends Component {
+import { craeteIncrementAsyncAction, craeteDecrementAction, craeteIncrementAction} from '../../redux/count_action'
+import { connect } from 'react-redux'
+
+// 定义CountUI组件
+class CountUi extends Component {
   state = {  wind: '北风6级' }
   // 加
   increment = () => {
@@ -48,4 +52,12 @@ class Count extends Component {
   }
 }
 
-export default Count;
+// 容器组件
+export default connect(
+    (state) => ({sum: state}), // 映射状态
+    {
+      jia: craeteIncrementAction,
+      jian: craeteDecrementAction,
+      jiaAsync: craeteIncrementAsyncAction,
+    } // 映射状态操作的方法
+)(CountUi)
