@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import Demo from './components/3_hooks/index_function'
+import Demo from './components/5_Context/A'
 
 class App extends Component {
   render() {
     return (
-        <div>
-          <Demo />
-        </div>
+        <Demo />
     );
   }
 }

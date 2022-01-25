@@ -1,0 +1,20 @@
+.a {
+    width: 500px;
+    background: gray;
+    padding: 10px;
+}
+
+.b {
+    background: skyblue;
+    padding: 10px;
+}
+
+.c {
+    background: orange;
+    padding: 10px;
+}
+
+.d {
+    background: antiquewhite;
+    padding: 10px;
+}
