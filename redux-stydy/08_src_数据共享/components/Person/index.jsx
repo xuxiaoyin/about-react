@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {addPerson} from '../../redux/actions/person'
+import {createAddPersonAction} from '../../redux/actions/person'
 
 class Person extends Component {
   state = {
@@ -9,7 +9,7 @@ class Person extends Component {
   }
   addPerson = () => {
     const {name, age} = this.state
-    this.props.addPerson({name, age})
+    this.props.add({name, age})
 
   }
 
@@ -38,5 +38,7 @@ class Person extends Component {
 
 export default connect(
     state => ({sum:state.count, persons: state.person}),
-    {addPerson}
+    {
+      add: createAddPersonAction
+    }
 )(Person);

@@ -3,15 +3,15 @@
 import { DECREMENT, INCREMENT } from '../constant'
 
 // 创建加的action
-export const craeteIncrementAction = value => ({type: INCREMENT, data: value})
+export const increment= value => ({type: INCREMENT, data: value})
 
 // 创建减的action
-export const craeteDecrementAction = value => ({type: DECREMENT, data: value})
+export const decrement = value => ({type: DECREMENT, data: value})
 
-export const craeteIncrementAsyncAction = (value, delay) => {
+export const incrementAsync = (value, delay) => {
   return (dispatch) => {
     setTimeout(() => {
-      dispatch(craeteIncrementAction(value))
+      dispatch(increment(value))
     }, delay)
   }
 }
